@@ -5,6 +5,7 @@
 #include <mbgl/style/layer.hpp>
 #include <mbgl/style/filter.hpp>
 #include <mbgl/style/property_value.hpp>
+#include <mbgl/style/data_driven_property_value.hpp>
 
 #include <mbgl/util/color.hpp>
 
@@ -72,9 +73,9 @@ public:
     PropertyValue<std::string> getIconImage() const;
     void setIconImage(PropertyValue<std::string>);
 
-    static PropertyValue<float> getDefaultIconRotate();
-    PropertyValue<float> getIconRotate() const;
-    void setIconRotate(PropertyValue<float>);
+    static DataDrivenPropertyValue<float> getDefaultIconRotate();
+    DataDrivenPropertyValue<float> getIconRotate() const;
+    void setIconRotate(DataDrivenPropertyValue<float>);
 
     static PropertyValue<float> getDefaultIconPadding();
     PropertyValue<float> getIconPadding() const;

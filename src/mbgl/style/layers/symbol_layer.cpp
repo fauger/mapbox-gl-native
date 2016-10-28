@@ -213,15 +213,15 @@ void SymbolLayer::setIconImage(PropertyValue<std::string> value) {
     impl->layout.unevaluated.get<IconImage>() = value;
     impl->observer->onLayerLayoutPropertyChanged(*this, "icon-image");
 }
-PropertyValue<float> SymbolLayer::getDefaultIconRotate() {
+DataDrivenPropertyValue<float> SymbolLayer::getDefaultIconRotate() {
     return IconRotate::defaultValue();
 }
 
-PropertyValue<float> SymbolLayer::getIconRotate() const {
+DataDrivenPropertyValue<float> SymbolLayer::getIconRotate() const {
     return impl->layout.unevaluated.get<IconRotate>();
 }
 
-void SymbolLayer::setIconRotate(PropertyValue<float> value) {
+void SymbolLayer::setIconRotate(DataDrivenPropertyValue<float> value) {
     if (value == getIconRotate())
         return;
     impl->layout.unevaluated.get<IconRotate>() = value;

@@ -12,6 +12,7 @@ public:
     GeometryCollection geometry;
     optional<std::u16string> text;
     optional<std::string> icon;
+    float iconRotation;
     std::size_t index;
 };
 
