@@ -8,8 +8,6 @@ mason_use(benchmark VERSION 1.0.0)
 include(cmake/loop-darwin.cmake)
 
 macro(mbgl_platform_core)
-    set_xcode_property(mbgl-core GCC_SYMBOLS_PRIVATE_EXTERN YES)
-
     target_sources(mbgl-core
         # File source
         PRIVATE platform/darwin/src/http_file_source.mm
@@ -59,6 +57,7 @@ macro(mbgl_platform_core)
 
     target_compile_options(mbgl-core
         PRIVATE -fobjc-arc
+        PRIVATE -fvisibility=hidden
     )
 
     target_include_directories(mbgl-core
@@ -82,8 +81,6 @@ endmacro()
 
 
 macro(mbgl_platform_render)
-    set_xcode_property(mbgl-render GCC_SYMBOLS_PRIVATE_EXTERN YES)
-
     target_link_libraries(mbgl-render
         PRIVATE mbgl-loop
         PRIVATE "-framework Foundation"
@@ -97,8 +94,6 @@ endmacro()
 
 
 macro(mbgl_platform_offline)
-    set_xcode_property(mbgl-offline GCC_SYMBOLS_PRIVATE_EXTERN YES)
-
     target_link_libraries(mbgl-offline
         PRIVATE mbgl-loop
         PRIVATE "-framework Foundation"
@@ -112,8 +107,6 @@ endmacro()
 
 
 macro(mbgl_platform_test)
-    set_xcode_property(mbgl-test GCC_SYMBOLS_PRIVATE_EXTERN YES)
-
     target_sources(mbgl-test
         PRIVATE test/src/main.cpp
     )
@@ -122,6 +115,10 @@ macro(mbgl_platform_test)
         test/src/main.cpp
             PROPERTIES
         COMPILE_FLAGS -DWORK_DIRECTORY="${CMAKE_SOURCE_DIR}"
+    )
+
+    target_compile_options(mbgl-test
+        PRIVATE -fvisibility=hidden
     )
 
     target_link_libraries(mbgl-test
@@ -136,7 +133,9 @@ macro(mbgl_platform_test)
 endmacro()
 
 macro(mbgl_platform_benchmark)
-    set_xcode_property(mbgl-benchmark GCC_SYMBOLS_PRIVATE_EXTERN YES)
+    target_compile_options(mbgl-benchmark
+        PRIVATE -fvisibility=hidden
+    )
 
     target_sources(mbgl-benchmark
         PRIVATE benchmark/src/main.cpp
@@ -160,7 +159,9 @@ macro(mbgl_platform_benchmark)
 endmacro()
 
 macro(mbgl_platform_node)
-    set_xcode_property(mbgl-node GCC_SYMBOLS_PRIVATE_EXTERN YES)
+    target_compile_options(mbgl-node
+        PRIVATE -fvisibility=hidden
+    )
 
     target_link_libraries(mbgl-node
         PRIVATE "-framework Foundation"
