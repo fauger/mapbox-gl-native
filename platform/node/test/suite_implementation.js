@@ -32,6 +32,7 @@ module.exports = function (style, options, callback) {
 
     options.debug = {
         tileBorders: options.debug,
+        parseStatus: options.debug,
         collision: options.collisionDebug,
         overdraw: options.showOverdrawInspector,
     };

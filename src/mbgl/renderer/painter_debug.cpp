@@ -51,13 +51,13 @@ void Painter::renderTileDebug(const RenderTile& renderTile) {
              *tile.debugBucket->vertexBuffer,
              *tile.debugBucket->indexBuffer,
              tile.debugBucket->segments,
-             gl::Lines { 4.0f * frame.pixelRatio });
+             gl::Lines { 1.0f * frame.pixelRatio });
 
         draw(Color::black(),
              *tile.debugBucket->vertexBuffer,
              *tile.debugBucket->indexBuffer,
              tile.debugBucket->segments,
-             gl::Lines { 2.0f * frame.pixelRatio });
+             gl::Lines { 1.0f * frame.pixelRatio });
     }
 
     if (frame.debugOptions & MapDebugOptions::TileBorders) {
@@ -65,7 +65,7 @@ void Painter::renderTileDebug(const RenderTile& renderTile) {
              tileVertexBuffer,
              tileBorderIndexBuffer,
              tileBorderSegments,
-             gl::LineStrip { 4.0f * frame.pixelRatio });
+             gl::LineStrip { 1.0f * frame.pixelRatio });
     }
 }
 

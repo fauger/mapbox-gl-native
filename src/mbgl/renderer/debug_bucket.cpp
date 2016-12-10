@@ -60,8 +60,8 @@ DebugBucket::DebugBucket(const OverscaledTileID& id,
 
     double baseline = 200;
     if (debugMode & MapDebugOptions::ParseStatus) {
-        const std::string text = util::toString(id) + " - " +
-                                 (complete ? "complete" : renderable ? "renderable" : "pending");
+        const std::string text = util::toString(id.canonical) + " - " +
+                                 (complete ? "loaded" : renderable ? "renderable" : "pending");
         addText(text, 50, baseline, 5);
         baseline += 200;
     }
